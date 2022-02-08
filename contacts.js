@@ -50,7 +50,12 @@ const addContact = async (id, name, email, phone) => {
     const result = JSON.parse(data);
 
     const newContactsList = [...result, newContact];
-    await fs.writeFile(contactsPath, JSON.stringify(newContactsList));
+    const newDataContacts = await fs.writeFile(
+      contactsPath,
+      JSON.stringify(newContactsList),
+    );
+    // console.table(newDataContacts);
+    // await fs.appendFile(contactsPath, JSON.stringify(newContact));
   } catch (error) {
     console.error(error.message);
   }
